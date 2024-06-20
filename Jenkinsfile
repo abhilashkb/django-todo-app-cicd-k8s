@@ -28,6 +28,12 @@ pipeline {
                 sh "docker push 224574/django-todo:${DOCK_TAG}"
             }
         }
+        stage("Deploy posgress sql"){
+            echo "deploy sql"
+        }
+        stage("Deploy DjangoApp"){
+            echo "deploy djano"
+        }
 
             }
     }
