@@ -29,10 +29,14 @@ pipeline {
             }
         }
         stage("Deploy posgress sql"){
+            steps{
             echo "deploy sql"
+            }
         }
         stage("Deploy DjangoApp"){
+            step{
             echo "deploy djano"
+            }
         }
 
             }
