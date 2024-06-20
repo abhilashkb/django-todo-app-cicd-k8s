@@ -14,5 +14,20 @@ pipeline {
               } 
             }
             }
+        stage("Docker Build"){
+            steps{
+                sh "docker build . -t 224574/django-todo:${DOCK_TAG}"
+            }
+        }
+         stage("Docker Push"){
+            steps{
+                echo "${DOCK_TAG}"
+                withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]) {
+                sh "docker login -u 224574 -p ${dockerhubpwd}"
+                }
+                sh "docker push 224574/django-todo:${DOCK_TAG}"
+            }
+        }
+
             }
     }
