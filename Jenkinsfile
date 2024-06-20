@@ -19,7 +19,7 @@ pipeline {
                 sh "docker build . -t 224574/django-todo:${DOCK_TAG}"
             }
         }
-         stage("Docker Push"){
+        stage("Docker Push"){
             steps{
                 echo "${DOCK_TAG}"
                 withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]) {
