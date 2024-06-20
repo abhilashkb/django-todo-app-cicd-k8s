@@ -16,7 +16,7 @@ You must have [Python3](https://www.python.org/downloads/) and [pip](https://pyp
 
 - Fork this repo to your GitHub account by clicking the **Fork** button.
 - Clone the repo to your machine.
-
+<!--
 ```bash
 git clone https://github.com/<username>/django-todo-app
 ```
@@ -25,7 +25,5 @@ git clone https://github.com/<username>/django-todo-app
 
 - See the [docker](https://github.com/betterstack-community/django-todo-app/tree/docker) branch for the final code.
 
-## ⚖ License
-
-The code used in this project and in the linked tutorial are licensed under the [Apache License, Version 2.0](LICENSE).
+-->
 
