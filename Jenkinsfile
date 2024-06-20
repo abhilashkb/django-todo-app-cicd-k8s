@@ -34,7 +34,7 @@ pipeline {
             }
         }
         stage("Deploy DjangoApp"){
-            step{
+            steps{
             echo "deploy djano"
             }
         }
