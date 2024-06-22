@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: postgress
+spec:
+  selector:
+    matchLabels:
+      appname: postgresstodo
+  template:
+    metadata:
+      labels:
+        appname: postgresstodo
+    spec:
+      containers:
+        - name: postgress
+          image: postgres:13
+          env:
+            - name: POSTGRES_DB
+              valueFrom:
+                secretKeyRef:
+                  name: postgress-secret
+                  key: POSTGRES_DB
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgress-secret
+                  key: POSTGRES_USER
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgress-secret
+                  key: POSTGRES_PASSWORD
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+            - name: postgress-volume
+              persistentVolumeClaim:
+                claimName: postgress-pvc-claim
+          
