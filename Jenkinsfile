@@ -28,7 +28,7 @@ pipeline {
                 sh "docker push 224574/django-todo:${DOCK_TAG}"
             }
         }
-        stage("Deploy posgress sql"){
+        stage("Deploy Cluster"){
             steps{
              withKubeConfig(credentialsId: 'jenkinskube', serverUrl: 'https://85.13.217.249:6443') {
          script {
@@ -39,17 +39,12 @@ pipeline {
                   #      sh 'kubectl apply -f k8s/postgres-service.yaml'
                         
                     #    sh 'kubectl apply -f k8s/django-service.yaml'
-                    }
-}
+                 }
+             }
                 
-            echo "deploy sql"
-            }
-        }
-        stage("Deploy DjangoApp"){
-            steps{
-            echo "deploy djano"
+  
             }
         }
 
             }
-    }
+        }
