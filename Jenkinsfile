@@ -30,6 +30,18 @@ pipeline {
         }
         stage("Deploy posgress sql"){
             steps{
+             withKubeConfig(credentialsId: 'jenkinskube', serverUrl: 'https://85.13.217.249:6443') {
+         script {
+             sh 'kubectl get pods'
+               #         sh 'kubectl apply -f k8s/postgres-configmap.yaml'
+                #        sh 'kubectl apply -f k8s/postgres-pv.yaml'
+                 #       sh 'kubectl apply -f k8s/postgres-deployment.yaml'
+                  #      sh 'kubectl apply -f k8s/postgres-service.yaml'
+                        
+                    #    sh 'kubectl apply -f k8s/django-service.yaml'
+                    }
+}
+                
             echo "deploy sql"
             }
         }
