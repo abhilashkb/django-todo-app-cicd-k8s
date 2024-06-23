@@ -1,4 +1,4 @@
-apiVersion: v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: postgress
@@ -33,7 +33,9 @@ spec:
           ports:
             - containerPort: 5432
           volumeMounts:
-            - name: postgress-volume
-              persistentVolumeClaim:
-                claimName: postgress-pvc-claim
-          
+            - mountPath: /var/lib/postgresql/data
+              name: postgress-data
+      volumes:
+        - name: postgress-volume
+          persistentVolumeClaim:
+            claimName: postgress-pvc-claim
