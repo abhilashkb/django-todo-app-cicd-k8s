@@ -30,7 +30,7 @@ pipeline {
         }
         stage("Deploy Cluster"){
             steps{
-             withKubeConfig(credentialsId: 'jenkinskube', serverUrl: 'https://85.13.217.249:6443') {
+             kubeconfig(credentialsId: 'jenkinskube', serverUrl: 'https://85.13.217.249:6443') {
          script {
              sh 'kubectl get pods'
 
