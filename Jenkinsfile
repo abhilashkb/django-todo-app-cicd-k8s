@@ -4,9 +4,6 @@ def getVersion(){
 }
 pipeline {
     agent any
-    environment {
-        KUBECONFIG_FILE = credentials('my-k8s-config') 
-    }
     stages {
         stage('SCM checkout') {
             steps {
