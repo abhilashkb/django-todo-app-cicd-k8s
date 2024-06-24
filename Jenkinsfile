@@ -35,12 +35,9 @@ pipeline {
             steps {
                 script {
                     // Write the kubeconfig to a temporary file
-                    def kubeconfig = writeFile(file: 'kubeconfig', text: KUBECONFIG_FILE)
-                    
-                    // Set the KUBECONFIG environment variable to point to the temporary file
-                    withEnv(["KUBECONFIG=./kubeconfig"]) {
-                        // Run kubectl commands
-                        sh 'kubectl get nodes'
+                    withCredentials([file(credentialsId: 'my-k8s-config', variable: 'SECRET_FILE')]) {
+                    sh 'cat $SECRET_FILE'
+
 
             }
         }
