@@ -28,15 +28,16 @@ pipeline {
                 sh "docker push 224574/django-todo:${DOCK_TAG}"
             }
         }
-        stage("Deploy Cluster"){
-            steps{
-              kubernetes {
-      yamlFile 'postgress-pv.yaml'
-      retries 2
-           }
-  
-            }
+ stage('Deploy to Kubernetes') {
+    steps {
+        withCredentials([usernamePassword(credentialsId: 'my-k8s-config', passwordVariable: 'KUBECONFIG_FILE')]) {
+            sh '''
+                export KUBECONFIG=$KUBECONFIG_FILE
+                kubectl get pods -n jenkins
+            '''
         }
+    }
+}
 
             }
         }
