@@ -4,6 +4,9 @@ def getVersion(){
 }
 pipeline {
     agent any
+    environment {
+        KUBECONFIG_FILE = credentials('my-k8s-config') 
+    }
     stages {
         stage('SCM checkout') {
             steps {
@@ -28,16 +31,21 @@ pipeline {
                 sh "docker push 224574/django-todo:${DOCK_TAG}"
             }
         }
- stage('Deploy to Kubernetes') {
-    steps {
-        withCredentials([usernamePassword(credentialsId: 'my-k8s-config', passwordVariable: 'KUBECONFIG_FILE')]) {
-            sh '''
-                export KUBECONFIG=$KUBECONFIG_FILE
-                kubectl get pods -n jenkins
-            '''
-        }
-    }
-}
+        stage('Deploy to Kubernetes') {
+            steps {
+                script {
+                    // Write the kubeconfig to a temporary file
+                    def kubeconfig = writeFile(file: 'kubeconfig', text: KUBECONFIG_FILE)
+                    
+                    // Set the KUBECONFIG environment variable to point to the temporary file
+                    withEnv(["KUBECONFIG=${pwd()}/kubeconfig"]) {
+                        // Run kubectl commands
+                        sh 'kubectl get nodes'
 
             }
         }
+
+            }
+        }
+    }
+}
