@@ -30,9 +30,11 @@ pipeline {
         }
         stage("Deploy Cluster"){
             steps{
-              script{ 
-               sh 'kubectl apply -f postgress-pv.yaml'
-              }
+              kubernetes {
+      yamlFile 'postgress-pv.yaml'
+      retries 2
+           }
+  
             }
         }
 
