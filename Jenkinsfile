@@ -36,7 +36,7 @@ pipeline {
                     sh 'cat $SECRET_FILE'
                     withEnv(["KUBECONFIG=${SECRET_FILE}"]) {
                         // Run kubectl commands
-                        sh 'kubectl get nodes'
+                        sh 'kubectl get pods'
 
 
             }
