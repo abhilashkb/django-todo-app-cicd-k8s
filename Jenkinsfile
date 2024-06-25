@@ -38,7 +38,7 @@ pipeline {
                         // Run kubectl commands
                         sh 'kubectl get pods'
                         sh 'kubectl apply -f postgress-pv.yaml'
-                        sh 'kubectl apply -f postgres-service.yaml'
+                        sh 'kubectl apply -f postgres-deployment.yaml'
 
 
 
