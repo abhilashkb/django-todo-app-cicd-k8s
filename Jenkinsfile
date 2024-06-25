@@ -39,7 +39,8 @@ pipeline {
                         sh 'kubectl apply -f postgress-pv.yaml'
                         sh 'kubectl apply -f postgres-deployment.yaml'
                         sh 'kubectl apply -f postgres-service.yaml'
-
+                        sh 'kubectl apply -f django-deployment.yaml'
+                        sh 'kubectl apply -f django-service.yaml'
 
 
             }
