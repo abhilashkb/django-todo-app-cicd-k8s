@@ -33,7 +33,6 @@ pipeline {
                 script {
                     // Write the kubeconfig to a temporary file
                     withCredentials([file(credentialsId: 'my-k8s-config', variable: 'SECRET_FILE')]) {
-                    sh 'cat $SECRET_FILE'
                     withEnv(["KUBECONFIG=${SECRET_FILE}"]) {
                         // Run kubectl commands
                         sh 'kubectl get pods'

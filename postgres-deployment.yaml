@@ -5,11 +5,11 @@ metadata:
 spec:
   selector:
     matchLabels:
-      appname: postgresstodo
+      appname: postgres
   template:
     metadata:
       labels:
-        appname: postgresstodo
+        appname: postgres
     spec:
       containers:
         - name: postgress
