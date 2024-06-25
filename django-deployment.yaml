@@ -3,12 +3,14 @@ kind: Deployment
 metadata:
   name: django-todo
 spec:
+  replicas: 1
   selector:
     matchLabels:
       name: django-todo
   template:
     metadata:
-      name: django-todo
+      labels:
+        app: django-todo
     spec:
       containers:
         name: django-todo
