@@ -10,7 +10,9 @@ pipeline {
                 git branch: 'main', credentialsId: '3556331b-958c-41cd-b636-918833670bc2', url: 'https://github.com/abhilashkb/django-todo-app-cicd' 
 
              script{
-	          env.DOCK_TAG = getVersion()
+              
+	          env.DOCK_TAG = getVersion().trim()
+              
               } 
             }
             }
@@ -25,14 +27,13 @@ pipeline {
                 withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]) {
                 sh "docker login -u 224574 -p ${dockerhubpwd}"
                 }
-                sh "docker tag 224574/django-todo:${DOCK_TAG}  224574/django-todo:latest"
-               // sh "docker push 224574/django-todo:${DOCK_TAG}"
-                sh "docker push 224574/django-todo:latest"
+                sh "docker push 224574/django-todo:${DOCK_TAG}"
             }
         }
         stage('Deploy to Kubernetes') {
             steps {
                 script {
+                  //  sh 'sed 's|tagname|"${DOCK_TAG}"|' django-deployment.yaml'
                     // Write the kubeconfig to a temporary file
                     withCredentials([file(credentialsId: 'my-k8s-config', variable: 'SECRET_FILE')]) {
                     withEnv(["KUBECONFIG=${SECRET_FILE}"]) {
