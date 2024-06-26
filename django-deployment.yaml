@@ -13,16 +13,16 @@ spec:
         app: django-todo
     spec:
       containers:
-        name: django-todo
+      - name: django-todo
         image: 224574/django-todo:latest
         env:
         - name: POSTGRES_HOST
           value: postgres
         - name: POSTGRES_DB
           valueFrom:
-           secretKeyRef:
-             name: postgress-secret
-             key: POSTGRES_DB
+            secretKeyRef:
+              name: postgress-secret
+              key: POSTGRES_DB
         - name: POSTGRES_USER
           valueFrom:
             secretKeyRef:
@@ -30,12 +30,8 @@ spec:
               key: POSTGRES_USER
         - name: POSTGRES_PASSWORD
           valueFrom:
-             secretKeyRef:
-               name: postgress-secret
-               key: POSTGRES_PASSWORD
-      ports:
-       - containerPort: 8000
-
-           
-
-
+            secretKeyRef:
+              name: postgress-secret
+              key: POSTGRES_PASSWORD
+        ports:
+        - containerPort: 8000
