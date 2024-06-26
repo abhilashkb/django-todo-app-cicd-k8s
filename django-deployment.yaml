@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: django-todo
-        image: 224574/django-todo:tagname
+        image: 224574/django-todo:latest
         env:
         - name: POSTGRES_HOST
           value: postgres

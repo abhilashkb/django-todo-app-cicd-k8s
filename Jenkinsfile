@@ -26,12 +26,12 @@ pipeline {
                 sh "docker login -u 224574 -p ${dockerhubpwd}"
                 }
                 sh "docker push 224574/django-todo:${DOCK_TAG}"
+                sh "docker push 224574/django-todo:latest"
             }
         }
         stage('Deploy to Kubernetes') {
             steps {
                 script {
-                    sh 'sed 's|tagname|"${DOCK_TAG}"|' django-deployment.yaml'
                     // Write the kubeconfig to a temporary file
                     withCredentials([file(credentialsId: 'my-k8s-config', variable: 'SECRET_FILE')]) {
                     withEnv(["KUBECONFIG=${SECRET_FILE}"]) {
