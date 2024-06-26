@@ -7,4 +7,4 @@ spec:
     app: django-todo
   ports:
   - port: 80
-    targetPort: 80000
+    targetPort: 8000
