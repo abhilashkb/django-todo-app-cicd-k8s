@@ -25,7 +25,7 @@ pipeline {
                 withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]) {
                 sh "docker login -u 224574 -p ${dockerhubpwd}"
                 }
-                sh "docker tag 224574/django-todo:${DOCK_TAG} 224574/django-todo:latest"
+                sh "docker tag 224574/django-todo:${DOCK_TAG}  224574/django-todo:latest"
                // sh "docker push 224574/django-todo:${DOCK_TAG}"
                 sh "docker push 224574/django-todo:latest"
             }
