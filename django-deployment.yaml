@@ -6,7 +6,7 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      name: django-todo
+      app: django-todo
   template:
     metadata:
       labels:
