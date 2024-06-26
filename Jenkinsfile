@@ -32,7 +32,7 @@ pipeline {
             steps {
                 script {
                     sh """
-                    sed 's|tagname|"${DOCK_TAG}"|' django-deployment.yaml
+                    sed "s|tagname|$DOCK_TAG|" django-deployment.yaml
                     """
                     // Write the kubeconfig to a temporary file
                     withCredentials([file(credentialsId: 'my-k8s-config', variable: 'SECRET_FILE')]) {
