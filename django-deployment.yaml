@@ -16,19 +16,21 @@ spec:
       - name: django-todo
         image: 224574/django-todo:tagname
         env:
-        - name: POSTGRES_HOST
+        - name: DATABASE_PORT
+          value: "5432"
+        - name: DATABASE_HOST
           value: postgres
         - name: POSTGRES_DB
           valueFrom:
             secretKeyRef:
               name: postgres-secret
               key: POSTGRES_DB
-        - name: POSTGRES_USER
+        - name: DATABASE_USER
           valueFrom:
             secretKeyRef:
               name: postgres-secret
               key: POSTGRES_USER
-        - name: POSTGRES_PASSWORD
+        - name: DATABASE_PASSWORD
           valueFrom:
             secretKeyRef:
               name: postgres-secret
