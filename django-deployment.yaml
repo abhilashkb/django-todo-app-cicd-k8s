@@ -20,7 +20,7 @@ spec:
           value: "5432"
         - name: DATABASE_HOST
           value: postgres
-        - name: POSTGRES_DB
+        - name: DATABASE_NAME
           valueFrom:
             secretKeyRef:
               name: postgres-secret
