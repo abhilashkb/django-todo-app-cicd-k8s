@@ -6,6 +6,6 @@ spec:
   selector:
     app: django-todo
   ports:
-  - port: 80
+  - protocol: TCP
+    port: 8090
     targetPort: 8000
-  type: LoadBalancer
