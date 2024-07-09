@@ -39,12 +39,11 @@ pipeline {
                     withEnv(["KUBECONFIG=${SECRET_FILE}"]) {
                         // Run kubectl commands
                         sh 'kubectl get pods'
-                        sh 'kubectl apply -f postgress-pv.yaml'
-                        sh 'kubectl apply -f postgres-deployment.yaml'
-                        sh 'kubectl apply -f postgres-service.yaml'
-                        sh 'kubectl apply -f django-deployment.yaml'
-                        sh 'kubectl apply -f django-service.yaml'
-                        sh 'kubectl apply -f django-ingress.yaml'
+                        sh 'kubectl apply -f kubernetes/postgress-pv.yaml'
+                        sh 'kubectl apply -f kubernetes/postgres-deployment.yaml'
+                        sh 'kubectl apply -f kubernetes/postgres-service.yaml'
+                        sh 'kubectl apply -f kubernetes/django-deployment.yaml'
+                        sh 'kubectl apply -f kubernetes/django-service.yaml'
 
 
             }
