@@ -4,9 +4,11 @@ metadata:
   name: django-todo
   namespace: jenkins
 spec:
+  type: NodePort
   selector:
     app: django-todo
   ports:
   - protocol: TCP
-    port: 8090
+    port: 8000
     targetPort: 8000
+    nodePort: 30088
