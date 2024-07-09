@@ -8,6 +8,8 @@ spec:
   volumeMode: Filesystem
   accessModes:
     - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: standard
   hostPath:
     path: /mnt/data
 
