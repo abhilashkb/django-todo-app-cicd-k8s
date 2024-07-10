@@ -2,15 +2,16 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: postgres
+  app: postgres
   namespace: jenkins
 spec:
   selector:
     matchLabels:
-      appname: postgres
+      app: postgres
   template:
     metadata:
       labels:
-        appname: postgres
+        app: postgres
     spec:
       containers:
         - name: postgress
