@@ -159,9 +159,3 @@ Monitor the Jenkins console output for any errors and ensure the deployment is s
 
 We welcome contributions to improve this project. Please fork the repository and create a pull request with your changes. Ensure that your code follows the existing code style and includes tests where necessary.
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-```
-
-Feel free to adjust any part of this `README.md` to better match your specific project requirements and setup.
